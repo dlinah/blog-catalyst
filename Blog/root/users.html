@@ -1,0 +1,61 @@
+
+
+    <!--.container-fluid{
+		border: 1px solid #0000ff;
+		padding: 2%;
+		border-radius: 10px;
+		margin-top: 2%;
+
+
+	}
+
+    button{
+        margin-left: 10px;
+    }-->
+
+
+<div class="mm">
+        <h2>users</h2>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>username</th>
+                <th>full name</th>
+                <th>gender</th>
+                <th>role</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            [% FOREACH user IN users -%]
+            <tr>
+            <th>[%user.id%]</th>
+            <th>[%user.username%]</th>
+            <th>[%user.full_name%]</th>
+            <th>[%user.gender%]</th>
+            <th>[%user.role.role%]</th>
+            <th>
+                    <form  method="post" action="[% c.uri_for(c.controller('user').action_for('edit'),user.id) %]" class="">
+                        <button type="submit" name="edit" class="btn2 btn-secondary btn-sm">edit  </button>
+
+                    </form>
+                [%IF user.role_id==2%]
+                    <form  method="post" action="[% c.uri_for(c.controller('user').action_for('del'),user.id) %]" class="">
+                        <button name="del"  type="submit" class="btn2 btn-danger btn-sm">delete</button>
+
+                    </form>
+                [%END%]
+
+            </th>
+            </tr>
+
+
+            [%END%]
+
+            </tbody>
+        </table>
+</div>
+
+

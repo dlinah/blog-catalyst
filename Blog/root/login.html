@@ -1,0 +1,25 @@
+
+<div class="login-page">
+            <p class="white">[%status_msg%] </p>
+            <div class="form">
+                [% IF c.user_exists %]
+                <p>please not that you are already logedin <br> logout frist</p>
+                <form action="[% c.uri_for(c.controller('user').action_for('logout')) %]" >
+
+                <button  class="btn btn-primary logout" id="login">logout</button>
+                </form>
+
+                [%ELSE%]
+                <form method="post" action="[% c.uri_for(c.controller('user').action_for('login')) %]" >
+                    <input type="text" name="username" placeholder="username"/>
+                    <input type="password" name="password" placeholder="password"/>
+                    <input type="hidden" name="name" value="val"/>
+                    <button class="btn btn-primary " id="login">login</button>
+                    <p class="error">[% error_msg %]</p>
+                    <p class="message">Not registered? <a href="[% c.uri_for(c.controller('user').action_for('goregister')) %]">Create an account</a></p>
+
+                </form>
+                [%END%]
+            </div>
+
+        </div>

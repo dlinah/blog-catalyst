@@ -1,0 +1,47 @@
+
+<div class="login-page">
+    <p class="white">[%stat%] </p>
+    <div class="form">
+        [% IF c.user_exists %]
+        <p>please not that you are already logedin <br> logout frist</p>
+        <form action="[% c.uri_for(c.controller('user').action_for('logout')) %]" >
+
+            <button  class="btn btn-primary logout" id="login">register</button>
+        </form>
+
+        [%ELSE%]
+        <form method="post" action="[% c.uri_for(c.controller('user').action_for('register')) %]" >
+            <input type="text" name="fname" placeholder="Enter your frist name">
+            <input type="text" name="lname" placeholder="Enter your last name">
+            <input type="email" name="email" placeholder="Enter email">
+            <input type="text" name="username" placeholder="username"/>
+            <div class="row form-group">
+                <div class="col-sm-6">
+            <label class="btn ">
+                <input type="radio" name="gender" value="male" /> Male
+            </label>
+            </div>
+                <div class="col-sm-6">
+
+                <label class="btn ">
+                <input type="radio" name="gender" value="female" /> Female
+            </label>
+    </div>
+            </div>
+
+            <input type="text" name="contry" placeholder="contry"/>
+            <input type="hidden" name="nmae" value="val"/>
+
+            <input type="password" name="password" placeholder="password"/>
+            <input type="password" name="repassword" placeholder="confirm password">
+
+
+            <button class="btn btn-primary " id="login" type="submit">register</button>
+            <p class="error">[% error_msg %]</p>
+
+        </form>
+        [%END%]
+    </div>
+
+</div>
+1

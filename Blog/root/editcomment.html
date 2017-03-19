@@ -1,0 +1,12 @@
+<form id="post_form" method="post" action="[% c.uri_for(c.controller('comments').action_for('doedit')) %]" class="mm">
+
+    <div class="form-group">
+        <label for="post">comment:</label>
+        <textarea class="form-control" rows="5" id="post" name="post"  >[%object.msg%]</textarea>
+    </div>
+    <div class="form-group">
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default  ">edit</button>
+        </div>
+    </div>
+</form>

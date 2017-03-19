@@ -1,0 +1,52 @@
+
+<div class="post-preview mm">
+    <h2>[%post_view.title%]</h2>
+    <p>[%post_view.body%]</p>
+</div>
+<hr>
+[% IF c.user_exists %]
+<form id="post_form" class="com" method="post" action="[% c.uri_for(c.controller('comments').action_for('add') )%]">
+    <div class="form-group">
+        <label for="post" class="thin">comment:</label>
+        <textarea class="form-control" rows='3' id="post" name="post" ></textarea>
+        <input type="hidden" name="post_id" value="[%post_view.id%]">
+    </div>
+    <div class="form-group">
+        <div class="pull-right">
+            <button type="submit" class="btn2 btn-default btn-sm ">reply</button>
+        </div>
+    </div>
+</form>
+<hr>
+[%END%]
+[% FOREACH comment IN comments -%]
+
+<div class="post-preview">
+
+    <p class="post-meta">Posted by <a href="[% c.uri_for(c.controller('views').action_for('profile')) %]">[%comment.auth.full_name%]</a> on  [%comment.date%]</p>
+    <a href="[% c.uri_for(c.controller('views').action_for('post'),post.id) %]">
+        <h3 class="post-subtitle">
+            [%comment.msg%]
+        </h3>
+    </a>
+    [%IF c.user.id==comment.auth.id || c.user.role_id==1%]
+
+    <div class="row">
+
+
+        <form  method="post" action="[% c.uri_for(c.controller('comments').action_for('edit'),comment.id,post_view.id) %]" class="col-sm-1">
+            <button type="submit" name="edit" class="btn2 btn-secondary btn-sm">edit</button>
+
+        </form>
+
+        <form  method="post" action="[% c.uri_for(c.controller('comments').action_for('del'),comment.id,post_view.id) %]" class="col-sm-1">
+            <button name="del"  type="submit" class="btn2 btn-danger btn-sm">delete</button>
+
+        </form>
+    </div>
+    [%END%]
+
+
+</div>
+<hr>
+[% END %]

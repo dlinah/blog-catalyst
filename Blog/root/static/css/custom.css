@@ -1,0 +1,30 @@
+#post_form{
+    padding: 30px; margin-bottom: 150px; clear: both;
+}
+.pull{
+
+    display: block; align-items: flex-start;
+}
+.mm{
+    margin-top: 13%;
+    text-align: center;
+}
+.thin{
+    font-weight: normal;
+}
+.btn2{
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0;
+    font-weight: 700;
+    width: auto!important;
+    border:0px;
+}
+.com{
+    margin-bottom: 10px !important;
+}
+#cont{width: 70%;}
+
+#sub{float: right}
+
